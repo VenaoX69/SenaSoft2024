@@ -1,133 +1,122 @@
 # SenaSoft2024
 
-Project Developed in Collaboration whit [Jhon esneider castañeda],GitHub = https://github.com/uranium092, [Development Time: 3 business Days]. 3rd in Free Development category, sponsored by IBM([SkillBuild] https://skillsbuild.org/).
+** Project Developed in Collaboration with [Jhon esneider castañeda]
+** GitHub = https://github.com/uranium092
+** Development Time: **3 business Days. 
+** Result:** 3rd place in the Free Development category, sponsored by IBM([SkillBuild] https://skillsbuild.org/).
 
 **Technologies:**
-	**Frontend:** React whit MUI(**UI Library**) and Leaflet(**Map Library**).
+	**Frontend:** React with MUI(**UI Library**) and Leaflet(**Map Library**).
 	**Backend:** Java, Spring Boot, Maven, Spring Data.
-	**MotorSQL:** MongDB
+	**Database:** MongDB
  [Challenge Details:] https://drive.google.com/file/d/1Np9pFQLVkpLlPe45oRZe_9dg8_8N_Ase/view?usp=drive_link)
 
 **Important Note:** 
 
 To access administrative roles and functions (as requested by the sponsor), you must use the folliwing ID number at the administrative Login: `9999`.
 
-## Necessary requirements###.
+## Prerequisites###.
 ### Backend ###:
-1.  **Java:** Download and install JDk version 17 or higher from [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html).
-2.  **MongoDB(2 options):**
+1.  **Java:** JDk 17 or higher - download from [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html).
+2.  **MongoDB (2 options):**
     * Install MongoDB Community Edition version 5.0.26 or higher from [MongoDB](https://www.mongodb.com/try/download/community).
     * Alternatively, you can use the cloud service [MongoDB Atlas](https://www.mongodb.com/atlas/database).
 
 ### Frontend:
-1.  **Node.js:** Download and install Node.js vesion 20.12.2 or higher from [NodeOrg](https://nodejs.org/en/download).
+1.  **Node.js:** vesion 20.12.2 or higher - download from [NodeOrg](https://nodejs.org/en/download).
 
 
-## Repository Structure:
-The repository contains two projects: Backend and Frontend.
-* `BackSenaSoft/`: Contains the source code written in Spring Boot.
-* `frontSenaSoft/`: Contains the source code in React written using both `.jsx` and `.tsx`.😅
-
-## Firts Stpes
-1.  **Clone Repository:**
+## Firts Steps
+1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/uranium092/SenaSoft2024
+    git clone https://github.com/VenaoX69/SenaSoft2024.git
     ```
 
+	## Repository Structure:
+		The repository contains two projects: Backend and Frontend.
+			* `BackSenaSoft/`: Spring Boot backend.
+			* `frontSenaSoft/`: React frontend(`.jsx` and `.tsx`😅).
 
 
-## Configuración
+## Configuration
 
-### Backend (BackSenaSoft)
+### Backend
+1.  **MongoDB:** Ensure your MongoDB instance is running(local ot Atlas).
+		**DataBase:** Create a database named `SenaSoft`.
 
-1.  **Navegar al directorio del backend:**
+2.  **Backend Configuration:**
 
-    ```bash
-    cd SenaSoft2024/BackSenaSoft
-    ```
+		Edit `BackSenaSoft/src/main/resources/application.properties`:
+	   ```
+		   properties
+		   # Default: local MongoDB
+		   spring.data.mongodb.uri=mongodb://localhost:27017/SenaSoft
 
-2.  **MongoDB:** Asegúrate de que MongoDB esté en ejecución.
-3.  **Base de datos:** Crea una base de datos llamada `SenaSoft` en tu instancia de MongoDB (local o Atlas).
-4.  **`application.properties`:** El archivo `application.properties` se encuentra en `src/main/resources/`. Por defecto, está configurado para conectar con MongoDB en localhost. Si estás utilizando MongoDB Atlas, debes modificar la cadena de conexión en este archivo.
+		   # For Atlas, replace with:
+		   spring.data.mongodb.uri=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/SenaSoft?retryWrites=true&w=majority
+	   ```
+			
+### Frontend:
 
-    ```properties
-    spring.application.name=BackSenaSoft
-    spring.data.mongodb.uri=mongodb://localhost:27017/SenaSoft
-    ```
+1.  **Enviroment variables**	
+		In 'frontSenaSoft/' create a file name `.env`:
+				```properties
+				VITE_SERVER_URL=http://localhost:8080
+				```
+			**If your backend runs on a different port, update VITE_SERVER_URL accordingly.**
 
-    Si usas MongoDB Atlas, la cadena de conexión se verá similar a:
+## Execution
 
-    ```properties
-    spring.data.mongodb.uri=mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/SenaSoft?retryWrites=true&w=majority
-    ```
+### Backend
+1. **Run the application:**
 
-### Frontend (frontSenaSoft)
+   - **Using the Maven Wrapper**  
+     - **Unix/macOS:**
+       ```bash
+       ./mvnw spring-boot:run
+       ```
+     - **Windows (PowerShell / CMD):**
+       ```powershell
+       mvnw.cmd spring-boot:run
+       ```
 
-1.  **Navegar al directorio del frontend:**
-
-    ```bash
-    cd SenaSoft2024/frontSenaSoft
-    ```
-
-2.  **`.env`:** Crea un archivo `.env` en el directorio `frontSenaSoft/` con la siguiente información:
-
-    ```properties
-    VITE_SERVER_URL=http://localhost:8080
-    ```
-
-    * Este archivo guarda la URL del backend; si este no está en ejecución en el puerto `:8080`, ajusta la URL en el archivo `.env`.
-
-## Ejecución
-
-### Backend (BackSenaSoft)
-
-1.  **Ejecutar la aplicación:**
-
-    * **Usando el Wrapper de Maven (mvnw):**
-
-        ```bash
-        mvnw spring-boot:run
-        ```
-
-    * **Usando Maven instalado localmente:**
+    - **Run with a local Maven install:**
 
         ```bash
         mvn spring-boot:run
         ```
 
-    * **Ejecutando el JAR compilado:**
+    - **Excecute the compiled JAR:**
 
-        * Compilar el proyecto:
+        * Build the project:
 
             ```bash
             mvn clean package
             ```
 
-        * Ejecutar el JAR:
+        * Run the JAR:
 
             ```bash
             java -jar target/app.jar
             ```
-            * Reemplaza app.jar por el nombre del archivo .jar generado en `/target`
+            **Note:** Replace `app.jar` with the actual JAR filename generated in the `/target` directory.
 
-### Frontend (frontSenaSoft)
-
-1.  **Instalar dependencias:**
+### Frontend
+1.  **Install dependencies:**
 
     ```bash
     npm install
     ```
 
-2.  **Ejecutar el frontend:**
+2.  **Run Frontend:**
 
     ```bash
     npm run dev
     ```
 
-    * El frontend estará disponible en `http://localhost:5173`.
+    * Available at: `http://localhost:5173`.
 
 ## Recomendaciones
 
-* Asegúrate de que el backend se esté ejecutando en el puerto `:8080`, ya que el frontend está configurado para conectarse a esta URL por defecto.
-* Si necesitas cambiar el puerto del backend, actualiza la variable `VITE_SERVER_URL` en el archivo `.env` del frontend.
+* The Frontend deafults to `http://localhost:8080`, If you change you backend port, update `VITE_SERVER_URL` in the `.env` file.
